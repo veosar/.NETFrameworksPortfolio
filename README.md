@@ -1,2 +1,2 @@
-# RabbitMQ
-Projekt do pokazania umiejętności w ramach RabbitMQ
+# .NETFrameworksPortfolio
+Repozytorium przedstawiające niewielkie projekty skoncentrowane na konkretnym frameworku / stacku technologicznym, stworzone w celu ćwiczeń oraz możliwości pokazania wiedzy związanej z danym zagadnieniem.
