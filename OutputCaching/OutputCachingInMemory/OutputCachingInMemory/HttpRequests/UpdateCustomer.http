@@ -1,0 +1,11 @@
+﻿PUT http://localhost:8080/customers/51512c7e-04ed-4ede-aba7-77f5a8b56801
+Content-Type: application/json
+
+{
+  "FirstName": "Przemysław",
+  "LastName": "Kijak",
+  "Email": "przemyslaw@kijak5.com",
+  "DateOfBirth": "1992-01-01"
+}
+
+###
