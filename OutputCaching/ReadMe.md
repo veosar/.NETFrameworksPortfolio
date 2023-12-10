@@ -9,7 +9,7 @@ You can also switch caching method from InMemory to Redis by changing appsetting
 
 **Results:**
 
- Cache:
+InMemory Cache:
 
 Direct DB call:
 
