@@ -1,8 +1,8 @@
 ﻿using System.Data;
 using Dapper;
-using OutputCachingInMemory.Models;
+using OutputCaching.Models;
 
-namespace OutputCachingInMemory.Repositories;
+namespace OutputCaching.Repositories;
 
 public interface ICustomerRepository
 {

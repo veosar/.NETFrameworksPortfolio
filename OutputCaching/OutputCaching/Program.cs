@@ -1,9 +1,11 @@
 using Dapper;
 using Microsoft.AspNetCore.OutputCaching;
-using OutputCachingInMemory.Extensions;
-using OutputCachingInMemory.Models;
-using OutputCachingInMemory.Repositories;
-using OutputCachingInMemory.SqlTypeHandlers;
+using OutputCaching.Enums;
+using OutputCaching.Extensions;
+using OutputCaching.Models;
+using OutputCaching.Models.Options;
+using OutputCaching.Repositories;
+using OutputCaching.SqlTypeHandlers;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,10 +17,20 @@ builder.Services.AddSwaggerGen();
 
 SqlMapper.AddTypeHandler(new SqlDateOnlyTypeHandler());
 builder.Services.AddServices(builder.Configuration);
-builder.Services.AddOutputCache(options =>
+CacheSettings cacheSettings = new();
+builder.Configuration.GetSection(CacheSettings.SectionName)
+    .Bind(cacheSettings);
+
+if (cacheSettings.OutputCacheType == OutputCacheType.Redis)
 {
-    options.AddBasePolicy(x => x.NoCache()); //NoCache by default so it does not mess up with POST/PUT/DELETE
-});
+    builder.Services.AddStackExchangeRedisOutputCache(x =>
+    {
+        x.InstanceName = "OutputCachingApi";
+        x.Configuration = "redis:6379";
+    });
+}
+    
+builder.Services.AddOutputCache();
 
 var app = builder.Build();
 
@@ -49,7 +61,7 @@ app.MapPost("/customers", async (Customer customer, ICustomerRepository customer
     await customerRepository.CreateAsync(customer);
     await outputCacheStore.EvictByTagAsync("customers", cancellationToken);
     Results.Created($"customers/{customer.Id}", customer);
-});
+}).CacheOutput(x => x.NoCache());
 
 app.MapPut("/customers/{id:guid}", async (Guid id, Customer customer, ICustomerRepository customerRepository, IOutputCacheStore outputCacheStore,
     CancellationToken cancellationToken) =>
@@ -58,7 +70,7 @@ app.MapPut("/customers/{id:guid}", async (Guid id, Customer customer, ICustomerR
     await customerRepository.UpdateAsync(customer);
     await outputCacheStore.EvictByTagAsync("customers", cancellationToken);
     return Results.Ok(customer);
-});
+}).CacheOutput(x => x.NoCache());
 
 app.MapDelete("/customers/{id:guid}", async (Guid id, ICustomerRepository customerRepository, IOutputCacheStore outputCacheStore,
     CancellationToken cancellationToken) =>
@@ -66,18 +78,18 @@ app.MapDelete("/customers/{id:guid}", async (Guid id, ICustomerRepository custom
     await customerRepository.DeleteAsync(id);
     await outputCacheStore.EvictByTagAsync("customers", cancellationToken);
     Results.Ok(id);
-});
+}).CacheOutput(x => x.NoCache());
 
 app.MapGet("/customersnocache", async (ICustomerRepository customerRepository) =>
 {
     var customers = await customerRepository.GetAllAsync();
     return Results.Ok(customers);
-});
+}).CacheOutput(x => x.NoCache());
 
 app.MapGet("/customersnocache/{id:guid}", async (Guid id, ICustomerRepository customerRepository) =>
 {
     var customer = await customerRepository.GetAsync(id);
     return customer is null ? Results.NotFound() : Results.Ok(customer);
-});
+}).CacheOutput(x => x.NoCache());
 
 app.Run();

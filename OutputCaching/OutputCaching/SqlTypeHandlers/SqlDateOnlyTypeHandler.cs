@@ -1,7 +1,7 @@
 ﻿using System.Data;
 using Dapper;
 
-namespace OutputCachingInMemory.SqlTypeHandlers;
+namespace OutputCaching.SqlTypeHandlers;
 
 public class SqlDateOnlyTypeHandler : SqlMapper.TypeHandler<DateOnly>
 {

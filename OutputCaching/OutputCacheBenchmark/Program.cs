@@ -1,4 +1,4 @@
 ﻿using BenchmarkDotNet.Running;
-using InMemoryCachePerformanceBenchmark;
+using OutputCacheBenchmark;
 
 BenchmarkRunner.Run<ApiBenchmark>();

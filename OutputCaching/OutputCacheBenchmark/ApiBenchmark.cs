@@ -4,8 +4,7 @@ using System.Text.Json;
 using BenchmarkDotNet.Attributes;
 using Bogus;
 
-namespace InMemoryCachePerformanceBenchmark;
-
+namespace OutputCacheBenchmark;
 public class ApiBenchmark
 {
     private HttpClient _client;

@@ -1,10 +1,10 @@
 ﻿using System.Data;
 using Dapper;
 using Npgsql;
-using OutputCachingInMemory.Repositories;
-using OutputCachingInMemory.SqlTypeHandlers;
+using OutputCaching.Repositories;
+using OutputCaching.SqlTypeHandlers;
 
-namespace OutputCachingInMemory.Extensions;
+namespace OutputCaching.Extensions;
 
 public static class ServiceCollectionExtensions
 {
