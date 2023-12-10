@@ -2,8 +2,8 @@
 Content-Type: application/json
 
 {
-  "FirstName": "Przemysław 3 ",
-  "LastName": "Kijak 3 ",
+  "FirstName": "Przemysław 7 ",
+  "LastName": "Kijak 7 ",
   "Email": "przemyslaw@kijak.com",
   "DateOfBirth": "1992-01-01"
 }
