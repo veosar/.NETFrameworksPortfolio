@@ -80,35 +80,4 @@ app.MapGet("/customersnocache/{id:guid}", async (Guid id, ICustomerRepository cu
     return customer is null ? Results.NotFound() : Results.Ok(customer);
 });
 
-app.MapPost("/customersnocache", async (Customer customer, ICustomerRepository customerRepository,
-    IOutputCacheStore outputCacheStore,
-    CancellationToken cancellationToken) =>
-{
-    await customerRepository.CreateAsync(customer);
-    await outputCacheStore.EvictByTagAsync("customers",
-        cancellationToken); // This is here so it does not mess up our no cache endpoint testing
-    Results.Created($"customers/{customer.Id}", customer);
-});
-
-app.MapPut("/customersnocache/{id:guid}", async (Guid id, Customer customer, ICustomerRepository customerRepository,
-    IOutputCacheStore outputCacheStore,
-    CancellationToken cancellationToken) =>
-{
-    customer.Id = id;
-    await customerRepository.UpdateAsync(customer);
-    await outputCacheStore.EvictByTagAsync("customers",
-        cancellationToken); // This is here so it does not mess up our no cache endpoint testing
-    return Results.Ok(customer);
-});
-
-app.MapDelete("/customersnocache/{id:guid}", async (Guid id, ICustomerRepository customerRepository,
-    IOutputCacheStore outputCacheStore,
-    CancellationToken cancellationToken) =>
-{
-    await customerRepository.DeleteAsync(id);
-    await outputCacheStore.EvictByTagAsync("customers",
-        cancellationToken); // This is here so it does not mess up our no cache endpoint testing
-    Results.Ok(id);
-});
-
 app.Run();

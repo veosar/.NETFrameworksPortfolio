@@ -1,2 +1,2 @@
 # .NETPortfolio
-Repozytorium przedstawiające niewielkie projekty skoncentrowane na konkretnym frameworku / stacku technologicznym, stworzone w celu ćwiczeń oraz możliwości pokazania wiedzy związanej z danym zagadnieniem.
+Repository containing small, feature/framework oriented projects, created in order to practice and showcase knowledge regarding particular subject.
