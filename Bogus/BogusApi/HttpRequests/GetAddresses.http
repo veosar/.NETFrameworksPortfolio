@@ -1,0 +1,4 @@
+﻿GET http://localhost:8080/fake/address/1000
+Accept: application/json
+
+###
