@@ -5,11 +5,11 @@ This project showcases API output caching.
 
 You can use docker compose to run API, Postgres Database and Redis, and run Benchmark in Release mode to test the results.
 
-You can also switch caching method from  to Redis by changing appsettings.CacheSettings.OutputCacheType to "Redis" (Please note that setting this in appsettings isn't a standard practice, it's for showcase example).
+You can also switch caching method from InMemory to Redis by changing appsettings.CacheSettings.OutputCacheType to "Redis" (Please note that setting this in appsettings isn't a standard practice, it's for showcase example).
 
 **Results:**
 
- Cache:
+InMemory Cache:
 
 Direct DB call:
 
