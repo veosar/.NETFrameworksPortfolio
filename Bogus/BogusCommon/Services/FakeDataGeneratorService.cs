@@ -1,8 +1,9 @@
-﻿using Bogus.Models;
-using Bogus.Models.Options;
+﻿using Bogus;
+using BogusCommon.Models;
+using BogusCommon.Models.Options;
 using Microsoft.Extensions.Options;
 
-namespace Bogus.Services;
+namespace BogusCommon.Services;
 
 public interface IFakeDataGeneratorService
 {
@@ -46,15 +47,15 @@ public class FakeDataGeneratorService : IFakeDataGeneratorService
             .RuleFor(x => x.LastName, f => f.Name.LastName())
             .RuleFor(x => x.Address, _ => _addressFaker)
             .RuleFor(x => x.Email, (f, x) => f.Internet.Email(x.FirstName, x.LastName))
-            .RuleFor(x => x.DateOfBirth, f => DateOnly.FromDateTime(f.Date.Past(25)))
+            .RuleFor(x => x.DateOfBirth, f => DateOnly.FromDateTime(f.Date.PastOffset(25).UtcDateTime))
             .RuleFor(x => x.PhoneNumber, f => f.Person.Phone);
 
         _orderFaker = new Faker<Order>(fakeDataOptions.Value.Locale)
             .RuleFor(x => x.Number, f => f.Random.Replace("###-###-###"))
             .RuleFor(x => x.Customer, _ => _customerFaker)
             .RuleFor(x => x.Items, _ => _itemFaker.GenerateBetween(1, 5))
-            .RuleFor(x => x.OrderDate, f => f.Date.Past(5))
-            .RuleFor(x => x.PaymentDate, f => f.Date.Recent());
+            .RuleFor(x => x.OrderDate, f => f.Date.PastOffset(5))
+            .RuleFor(x => x.PaymentDate, f => f.Date.RecentOffset());
 
         if (fakeDataOptions.Value.Seed is null)
         {

@@ -1,4 +1,4 @@
-﻿namespace Bogus.Models;
+﻿namespace BogusCommon.Models;
 
 public enum Unit 
 {

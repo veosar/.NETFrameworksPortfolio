@@ -1,4 +1,4 @@
-﻿namespace Bogus.Models.Options;
+﻿namespace BogusCommon.Models.Options;
 
 public class FakeDataOptions
 {

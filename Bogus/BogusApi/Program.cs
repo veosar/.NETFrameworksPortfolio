@@ -1,6 +1,6 @@
 using Bogus;
-using Bogus.Models.Options;
-using Bogus.Services;
+using BogusCommon.Models.Options;
+using BogusCommon.Services;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 
@@ -12,7 +12,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.Configure<FakeDataOptions>(
     builder.Configuration.GetSection(FakeDataOptions.SectionName));
 
-builder.Services.AddSingleton<IFakeDataGeneratorService, FakeDataGeneratorService>();
+builder.Services.AddTransient<IFakeDataGeneratorService, FakeDataGeneratorService>();
 
 var app = builder.Build();
 
