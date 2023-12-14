@@ -1,7 +1,7 @@
 
 # S3
 
-This project showcases simple S3 usage along with Lambda Function for performing simple operations in reaction to file being added to S3.
+This project showcases S3 usage along with Lambda Function for performing simple operations in reaction to file being added to S3.
 
 In order to use this project you will need to authenticate your machine against AWS in scope for S3 + Lambda Functions for S3.
 
