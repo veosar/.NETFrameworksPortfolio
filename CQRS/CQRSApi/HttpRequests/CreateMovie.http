@@ -1,0 +1,9 @@
+﻿POST http://localhost:8080/movies
+Content-Type: application/json
+
+{
+  "Title": "Movie3",
+  "Genre": "SciFi",
+  "DateOfRelease": "2010-01-01"
+}
+###

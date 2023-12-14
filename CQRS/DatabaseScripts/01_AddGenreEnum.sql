@@ -1,0 +1,1 @@
+CREATE TYPE Genre AS ENUM ('Comedy', 'Action', 'Horror', 'Fantasy', 'SciFi');

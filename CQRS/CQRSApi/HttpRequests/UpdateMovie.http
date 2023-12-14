@@ -1,0 +1,10 @@
+﻿PUT http://localhost:8080/movies
+Content-Type: application/json
+
+{
+  "Id": "8c864f8d-0237-41ad-ade5-ceda7d558fb9",
+  "Title": "Movie55",
+  "Genre": "Comedy",
+  "DateOfRelease": "2023-01-01"
+}
+###
