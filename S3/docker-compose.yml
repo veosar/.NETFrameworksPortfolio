@@ -1,0 +1,10 @@
+﻿services:
+  s3api:
+    image: s3api
+    build:
+      context: ./
+      dockerfile: ./S3Api/Dockerfile
+    ports:
+      - 8080:8080
+    volumes:
+      - ${AWS_CREDENTIALS_LOCATION}:/home/s3user/.aws:ro
