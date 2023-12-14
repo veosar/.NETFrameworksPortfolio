@@ -5,7 +5,7 @@ This project showcases S3 usage along with Lambda Function for performing simple
 
 In order to use this project you will need to authenticate your machine against AWS in scope for S3 + Lambda Functions for S3.
 
-You can use docker compose to run this API. To do this you will need to configure AWS_CREDENTIALS_LOCATION environment variable.
+You can use docker compose to run this API. To do this you will need to configure AWS_CREDENTIALS_LOCATION environment variable in order to map your AWS credential inside docker container.
 
 ## S3Api
 
