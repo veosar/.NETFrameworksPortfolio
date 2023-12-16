@@ -1,0 +1,4 @@
+GET http://localhost:5000/customers/04943b0c-1642-4186-81dd-4dd523711e8c
+Accept: application/json
+
+###

@@ -1,0 +1,7 @@
+DELETE http://localhost:5000/customers/d937fc4d-d988-41ad-b44a-0dcce1840f2c
+Content-Type: application/json
+
+{
+}
+
+###

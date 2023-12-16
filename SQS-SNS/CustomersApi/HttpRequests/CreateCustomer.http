@@ -1,0 +1,11 @@
+POST http://localhost:5000/customers
+Content-Type: application/json
+
+{
+  "FirstName": "Przemysław 8 ",
+  "LastName": "Kijak 8 ",
+  "Email": "przemyslaw@kijak.com",
+  "TotalMoneySpent": "0"
+}
+
+###

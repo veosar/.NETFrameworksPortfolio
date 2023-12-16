@@ -1,0 +1,11 @@
+PUT http://localhost:5000/customers/f63ade21-ecf4-4301-b7f9-89393dd5d213
+Content-Type: application/json
+
+{
+  "FirstName": "Przemysław 1",
+  "LastName": "Kijak 1",
+  "Email": "przemyslaw@kijak5.com",
+  "TotalMoneySpent": 1001
+}
+
+###
