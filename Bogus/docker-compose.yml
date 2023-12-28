@@ -5,7 +5,7 @@
       context: ./
       dockerfile: ./BogusApi/Dockerfile
     ports:
-      - 8080:8080
+      - 5679:5679
   bogusdbapi:
     image: bogusdbapi
     build:

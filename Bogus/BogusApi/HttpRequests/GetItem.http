@@ -1,4 +1,4 @@
-﻿GET http://localhost:8080/fake/item
+﻿GET http://localhost:5679/fake/item
 Accept: application/json
 
 ###
