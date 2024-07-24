@@ -1,0 +1,41 @@
+version: '3.4'
+
+services:
+  an.api:
+    container_name: an-webapi
+    build:
+      context: .
+      dockerfile: AN.WebApi/Dockerfile
+    environment:
+      - OTEL_EXPORTER_OTLP_ENDPOINT=http://an.dashboard:18889
+
+  an.db:
+    image: postgres:latest
+    container_name: an-db
+    environment:
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+    volumes:
+      - ./.containers/db:/var/lib/postgresql/data
+    ports:
+      - ${POSTGRES_PORT}:${POSTGRES_PORT}
+
+  an.mq:
+    image: rabbitmq:3-management
+    container_name: an-mq
+    hostname: an-mq
+    volumes:
+      - ./.containers/queue/data/:/var/lib/rabbitmq
+      - ./.containers/queue/log/:/var/log/rabbitmq
+    ports:
+      - 5672:5672
+      - 15672:15672
+    environment:
+      RABBITMQ_DEFAULT_USER: ${RABBITMQ_USER}
+      RABBITMQ_DEFAULT_PASS: ${RABBITMQ_PASSWORD}
+  an.dashboard:
+    image: mcr.microsoft.com/dotnet/nightly/aspire-dashboard:latest
+    container_name: dashboard
+    ports:
+      - 18888:18888

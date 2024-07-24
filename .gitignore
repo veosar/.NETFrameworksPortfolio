@@ -419,6 +419,10 @@ FodyWeavers.xsd
 .idea/**/uiDesigner.xml
 .idea/**/dbnavigator.xml
 
+.env
+**/.env
+*.env
+
 # Gradle
 .idea/**/gradle.xml
 .idea/**/libraries

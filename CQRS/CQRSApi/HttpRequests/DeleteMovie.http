@@ -1,4 +1,4 @@
-﻿DELETE http://localhost:8080/movies/8c864f8d-0237-41ad-ade5-ceda7d558fb9
+﻿DELETE http://localhost:8080/movies/3ca6fc24-7665-4550-b172-b517775fd3e7
 Content-Type: application/json
 
 {
